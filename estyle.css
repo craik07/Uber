@@ -223,7 +223,6 @@ button:active {
   background-color: #e0e0e0;
 }
 
-/* Estilos para la sección Uber Reserve */
 .uber-reserve {
   padding: 60px 20px;
   background-color: #f8f9fa;
@@ -415,7 +414,6 @@ button:active {
   color: #1f2937;
 }
 
-/* Ilustraciones decorativas */
 .reserve-illustrations {
   position: absolute;
   right: 32px;
@@ -522,7 +520,7 @@ button:active {
   transform: translate(-50%, -50%);
 }
 
-/* Nueva sección de conductor */
+
 .driver-section {
   background-color: #f8f9fa;
   padding: 80px 20px;
@@ -599,7 +597,7 @@ button:active {
   font-size: 1rem;
 }
 
-/* Sección de empresas */
+
 .business-section {
   background-color: #fff;
   padding: 80px 20px;
@@ -843,7 +841,6 @@ button:active {
   text-align: left;
 }
 
-/* Sección de aplicaciones */
 .apps-section {
   background-color: #f8f9fa;
   padding: 80px 20px;
@@ -1021,7 +1018,6 @@ button:active {
   color: white;
 }
 
-/* Responsive design */
 @media (max-width: 1000px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
