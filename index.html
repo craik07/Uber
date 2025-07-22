@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pedí un viaje o registrate como socio conductor - Uber El Salvador</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #fff;
+      }
+
+      .Barra {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background-color: #000;
+        color: white;
+        flex-wrap: wrap;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .Barra button {
+        background: none;
+        border: none;
+        color: white;
+        font-weight: bold;
+        margin-left: 15px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 8px;
+      }
+
+      .Barra button:active {
+        background-color: rgba(29, 28, 28);
+      }
+
+      #boton {
+        background-color: white;
+        color: black;
+        font-size: 0.95rem;
+        border-radius: 20px;
+        padding: 10px 18px;
+        width: auto;
+        height: auto;
+      }
+
+      .hero {
+        background-color: #fff;
+        padding: 60px 20px 40px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 90px;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        margin-right: 40px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        font-weight: bold;
+      }
+
+      .travel-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .input-group {
+        display: flex;
+        align-items: center;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        padding: 12px;
+        position: relative;
+        margin-bottom: 8px;
+      }
+
+      .input-group input {
+        border: none;
+        background: transparent;
+        width: 100%;
+        font-size: 1rem;
+        outline: none;
+        padding-left: 10px;
+      }
+
+      .dot,
+      .square {
+        width: 10px;
+        height: 10px;
+        background-color: #000;
+      }
+
+      .dot {
+        border-radius: 50%;
+      }
+
+      .square {
+        border-radius: 2px;
+      }
+
+      .connector-line {
+        width: 2px;
+        height: 20px;
+        background-color: #ccc;
+        margin-left: 17px;
+        margin-top: -8px;
+        margin-bottom: -8px;
+      }
+
+      .arrow {
+        position: absolute;
+        right: 15px;
+        font-size: 1rem;
+      }
+
+      .form-buttons {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .btn-black {
+        background-color: #000;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .form-buttons a {
+        color: #000;
+        font-size: 0.9rem;
+        text-decoration: none;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 2px;
+      }
+
+      .hero-img {
+        max-width: 400px;
+        border-radius: 16px;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .sugerencias {
+        padding: 60px 20px;
+        background-color: #fff;
+        font-family: Arial, sans-serif;
+      }
+
+      .sugerencias-content {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .sugerencias h1 {
+        font-size: 2.2rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      /* Estilos para la sección Uber Reserve */
+      .uber-reserve {
+        padding: 60px 20px;
+        background-color: #f8f9fa;
+      }
+
+      .reserve-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .reserve-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #1a1a1a;
+        margin-bottom: 40px;
+      }
+
+      .reserve-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 40px;
+      }
+
+      .reserve-main {
+        background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+        border-radius: 24px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .reserve-main h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #1a1a1a;
+        margin-bottom: 40px;
+        line-height: 1.2;
+      }
+
+      .reserve-form-section h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #374151;
+        margin-bottom: 20px;
+      }
+
+      .reserve-form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 30px;
+      }
+
+      .reserve-input-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .reserve-input-group label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #374151;
+        margin-bottom: 8px;
+      }
+
+      .reserve-input-wrapper {
+        position: relative;
+      }
+
+      .reserve-input {
+        width: 100%;
+        padding: 16px 16px 16px 48px;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 1rem;
+        color: #1f2937;
+        outline: none;
+        transition: all 0.2s;
+      }
+
+      .reserve-input:focus {
+        border-color: #06b6d4;
+        box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+      }
+
+      .reserve-input::placeholder {
+        color: #9ca3af;
+      }
+
+      .reserve-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        color: #9ca3af;
+      }
+
+      .reserve-select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 12px center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        padding-right: 40px;
+      }
+
+      .reserve-btn {
+        background-color: #1f2937;
+        color: white;
+        font-weight: 600;
+        padding: 16px 48px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.2s;
+      }
+
+      .reserve-btn:hover {
+        background-color: #374151;
+      }
+
+      .reserve-advantages {
+        background-color: white;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .reserve-advantages h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #1f2937;
+        margin-bottom: 32px;
+      }
+
+      .advantage-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      .advantage-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #f3f4f6;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .advantage-icon svg {
+        width: 20px;
+        height: 20px;
+        color: #374151;
+      }
+
+      .advantage-text {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #1f2937;
+        line-height: 1.5;
+      }
+
+      .reserve-terms {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid #f3f4f6;
+      }
+
+      .reserve-terms button {
+        background: none;
+        border: none;
+        color: #6b7280;
+        font-weight: 500;
+        border-bottom: 1px dotted #9ca3af;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: color 0.2s;
+      }
+
+      .reserve-terms button:hover {
+        color: #1f2937;
+      }
+
+      /* Ilustraciones decorativas */
+      .reserve-illustrations {
+        position: absolute;
+        right: 32px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.2;
+        pointer-events: none;
+      }
+
+      .calendar-illustration {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 128px;
+        height: 160px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transform: rotate(12deg);
+        padding: 8px;
+      }
+
+      .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+      }
+
+      .calendar-day {
+        width: 12px;
+        height: 12px;
+        background-color: #fed7aa;
+        border-radius: 2px;
+        opacity: 0.6;
+      }
+
+      .watch-illustration {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 96px;
+        height: 128px;
+        transform: rotate(-12deg);
+      }
+
+      .watch-strap {
+        width: 24px;
+        height: 128px;
+        background-color: #92400e;
+        border-radius: 12px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .watch-face {
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 64px;
+        height: 64px;
+        background-color: #1f2937;
+        border-radius: 50%;
+        border: 4px solid #374151;
+      }
+
+      .watch-inner {
+        position: absolute;
+        inset: 8px;
+        border: 1px solid #4b5563;
+        border-radius: 50%;
+      }
+
+      .watch-hand-1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 16px;
+        background-color: white;
+        transform: translateX(-50%) translateY(-100%) rotate(45deg);
+        transform-origin: bottom;
+      }
+
+      .watch-hand-2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 2px;
+        height: 12px;
+        background-color: white;
+        transform: translateX(-50%) translateY(-100%) rotate(90deg);
+        transform-origin: bottom;
+      }
+
+      .watch-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        background-color: #f97316;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .card {
+        background-color: #f5f5f5;
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 140px;
+      }
+
+      .card img {
+        max-width: 80px;
+        height: auto;
+      }
+
+      .card-content {
+        max-width: 65%;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      .card p {
+        font-size: 0.95rem;
+        color: #444;
+        margin: 10px 0;
+      }
+
+      .card button {
+        background-color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 20px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      /* Nueva sección de conductor */
+      .driver-section {
+        background-color: #f8f9fa;
+        padding: 80px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+      }
+
+      .driver-container {
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        width: 100%;
+      }
+
+      .driver-image {
+        flex: 1;
+        max-width: 500px;
+      }
+
+      .driver-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+      }
+
+      .driver-content {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .driver-content h2 {
+        font-size: 2.8rem;
+        font-weight: bold;
+        color: #1a1a1a;
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .driver-content p {
+        font-size: 1.1rem;
+        color: #4b5563;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+
+      .driver-buttons {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 16px 32px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        border-bottom: 1px solid #d1d5db;
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      /* Sección de empresas */
+      .business-section {
+        background-color: #fff;
+        padding: 80px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 500px;
+      }
+
+      .business-container {
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        width: 100%;
+      }
+
+      .business-content {
+        flex: 1;
+        max-width: 600px;
+      }
+
+      .business-content h2 {
+        font-size: 2.8rem;
+        font-weight: bold;
+        color: #1a1a1a;
+        margin-bottom: 24px;
+        line-height: 1.2;
+      }
+
+      .business-content p {
+        font-size: 1.1rem;
+        color: #4b5563;
+        margin-bottom: 32px;
+        line-height: 1.6;
+      }
+
+      .business-buttons {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .business-image {
+        flex: 1;
+        max-width: 500px;
+      }
+
+      .business-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+      }
+
+      .lado-login {
+        padding: 40px 20px;
+        text-align: center;
+      }
+
+      .sesion-titulo {
+        font-size: 32px;
+        font-weight: bold;
+        color: #000;
+        margin-bottom: 20px;
+      }
+
+      .sesion-descripcion {
+        font-size: 18px;
+        color: #000;
+        margin-bottom: 24px;
+      }
+
+      .botones-contenedor {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .boton-principal {
+        background-color: #000;
+        color: #f2f2f2;
+        padding: 14px 28px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .boton-enlace {
+        background: none;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+        padding: 8px 0;
+        font-size: 16px;
+        color: #000;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .contenedor-horizontal {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .imagen-lateral {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+      }
+
+      /* Sección de aplicaciones */
+      .apps-section {
+        background-color: #f8f9fa;
+        padding: 80px 20px;
+      }
+
+      .apps-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .apps-title {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #1a1a1a;
+        margin-bottom: 60px;
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .app-item {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        text-align: left;
+      }
+
+      .qr-code {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+      }
+
+      .qr-code img {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+      }
+
+      .app-content h3 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        color: #1a1a1a;
+        margin: 0 0 8px 0;
+      }
+
+      .app-content p {
+        font-size: 0.95rem;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 60px 20px 40px 20px;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 32px;
+      }
+
+      .footer-support {
+        margin-bottom: 48px;
+      }
+
+      .footer-support a {
+        color: #d1d5db;
+        text-decoration: underline;
+        font-size: 1rem;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-bottom: 48px;
+      }
+
+      .footer-column h4 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 24px;
+        color: white;
+      }
+
+      .footer-column ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 16px;
+      }
+
+      .footer-column ul li a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+
+      .footer-column ul li a:hover {
+        color: white;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 32px;
+      }
+
+      .footer-social a {
+        color: #d1d5db;
+        font-size: 1.5rem;
+        transition: color 0.2s;
+      }
+
+      .footer-social a:hover {
+        color: white;
+      }
+
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        border-top: 1px solid #374151;
+        padding-top: 32px;
+      }
+
+      .footer-location {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: #d1d5db;
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+        color: #9ca3af;
+      }
+
+      .footer-links {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+
+      .footer-links a:hover {
+        color: white;
+      }
+
+      @media (max-width: 1000px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero-content {
+          margin-right: 0;
+          margin-bottom: 30px;
+        }
+        .reserve-content {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .reserve-form-grid {
+          grid-template-columns: 1fr;
+        }
+        .reserve-illustrations {
+          display: none;
+        }
+        .driver-container,
+        .business-container {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .apps-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .hero {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 30px 10px;
+        }
+        .hero-content h1 {
+          font-size: 2rem;
+        }
+        .reserve-title {
+          font-size: 2rem;
+        }
+        .reserve-main h2 {
+          font-size: 2rem;
+        }
+        .reserve-main {
+          padding: 24px;
+        }
+        .reserve-advantages {
+          padding: 24px;
+        }
+        .driver-content h2,
+        .business-content h2 {
+          font-size: 2.2rem;
+        }
+        .apps-title {
+          font-size: 2rem;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+</head>
+<body>
+  <header class="Barra">
+    <div class="logo">Uber</div>
+    <button>Viaja</button>
+    <button>Conduces</button>
+    <button>Empresas</button>
+    <button>Uber eats</button>
+    <button type="reset">Quiénes somos</button>
+    <button>&#127760;ES</button>
+    <button>Ayuda</button>
+    <button>Iniciar sesión</button>
+    <button id="boton">Regístrate</button>
+  </header>
+
+  <section class="hero">
+    <a id="viaje" style="position: absolute; top: -100px;"></a>
+    <div class="hero-content">
+      <h1>Viaja a cualquier lugar con la app de Uber</h1>
+      <form class="travel-form">
+        <div class="input-group">
+          <span class="dot"></span>
+          <input type="text" placeholder="Punto de partida" />
+          <span class="arrow">➤</span>
+        </div>
+        
+        <!-- Línea conectora entre punto y cuadrado -->
+        <div class="connector-line"></div>
+        
+        <div class="input-group">
+          <span class="square"></span>
+          <input type="text" placeholder="Destino" />
+          <span class="arrow">➤</span>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <div style="flex:1;">
+            <label style="font-size: 0.9rem; color: #444; margin-bottom: 4px; display: block;">Fecha</label>
+            <div class="input-group" style="margin-bottom:0;">
+              <span style="margin-right:8px;">
+                <svg width="18" height="18" fill="#222" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 18H5V8h14v12zm0-14v2H5V6h14z"></path></svg>
+              </span>
+              <input type="date" style="background:transparent; border:none; width:100%;" />
+            </div>
+          </div>
+          <div style="flex:1;">
+            <label style="font-size: 0.9rem; color: #444; margin-bottom: 4px; display: block;">Hora</label>
+            <div class="input-group" style="margin-bottom:0;">
+              <span style="margin-right:8px;">
+                <svg width="18" height="18" fill="#222" viewBox="0 0 24 24"><path d="M12 8v5h5v-2h-3V8z"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+              </span>
+              <input type="time" style="background:transparent; border:none; width:100%;" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-black">Ver precios</button>
+          <a href="#">Inicia sesión para ver tu actividad reciente</a>
+        </div>
+      </form>
+    </div>
+    <img class="hero-img" src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_448,w_672/v1712926828/assets/a3/cf8564-e2a6-418c-b9b0-65dd285c100b/original/3-2-ridesharing-new.jpg" alt="Uber Hero" />
+  </section>
+
+  <section class="sugerencias">
+    <a id="productos" style="position: absolute; top: -100px;"></a>
+    <div class="sugerencias-content">
+      <h1>Sugerencias</h1>
+      <div class="grid">
+        <div class="card">
+          <div class="card-content">
+            <h2>Viaje</h2>
+            <p>Viaja a cualquier lugar con la app de Uber. Pide un viaje, súbete y relájate.</p>
+            <button>Detalles</button>
+          </div>
+          <img src="https://mobile-content.uber.com/launch-experience/ride.png" alt="Auto" />
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h2>Reserve</h2>
+            <p>Reserva tu viaje con anticipación para que puedas relajarte ese día.</p>
+            <button>Detalles</button>
+          </div>
+          <img src="https://mobile-content.uber.com/uber_reserve/reserve_clock.png" alt="Calendario" />
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h2>Flash</h2>
+            <p>Uber hace que la entrega de artículos el mismo día sea más fácil que nunca.</p>
+            <button>Detalles</button>
+          </div>
+          <img src="https://cn-geo1.uber.com/static/mobile-content/Courier.png" alt="Entrega" />
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h2>Moto</h2>
+            <p>Obtén viajes económicos en motocicleta en minutos desde la puerta de tu casa.</p>
+            <button>Detalles</button>
+          </div>
+          <img src="https://d1a3f4spazzrp4.cloudfront.net/car-types/haloProductImages/v1.1/Motorcycle.png" alt="Moto" />
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h2>Alimentos</h2>
+            <p>Pide a domicilio en los restaurantes de tu zona con la app de Uber Eats.</p>
+            <button>Detalles</button>
+          </div>
+          <img src="https://mobile-content.uber.com/eats/ub_mode_nav_eats.png" alt="Alimentos" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="contenedor-horizontal">
+    <div class="lado-login">
+      <h2 class="sesion-titulo">Inicia sesión para ver los detalles de tu cuenta</h2>
+      <p class="sesion-descripcion">Consulta viajes anteriores, sugerencias personalizadas, recursos de soporte y más.</p>
+      <div class="botones-contenedor">
+        <button class="boton-principal">Inicia sesión con tu cuenta</button>
+        <a href="#" class="boton-enlace">Crea una cuenta</a>
+      </div>
+    </div>
+
+    <div class="lado-imagen">
+      <img
+        src="https://www.uber-assets.com/image/upload/v1751572089/assets/e0/a5a30d-9b07-4094-acc3-0a26203434cd/original/Signup-%282%29.svg"
+        alt="Imagen Uber"
+        class="imagen-lateral"
+      />
+    </div>
+  </div>
+
+  <!-- Nueva sección Uber Reserve -->
+  <section class="uber-reserve">
+    <a id="reserva" style="position: absolute; top: -100px;"></a>
+    <div class="reserve-container">
+      <h1 class="reserve-title">Planea para más adelante</h1>
+      
+      <div class="reserve-content">
+        <!-- Sección principal de reserva -->
+        <div class="reserve-main">
+          <!-- Ilustraciones decorativas -->
+          <div class="reserve-illustrations">
+            <div class="calendar-illustration">
+              <div class="calendar-grid">
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+                <div class="calendar-day"></div>
+              </div>
+            </div>
+            
+            <div class="watch-illustration">
+              <div class="watch-strap">
+                <div class="watch-face">
+                  <div class="watch-inner">
+                    <div class="watch-hand-1"></div>
+                    <div class="watch-hand-2"></div>
+                    <div class="watch-center"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reserve-form-section">
+            <h2>Viaja bien con Uber<br />Reserve</h2>
+            
+            <h3>Elige la fecha y la hora</h3>
+            
+            <div class="reserve-form-grid">
+              <div class="reserve-input-group">
+                <label>Fecha</label>
+                <div class="reserve-input-wrapper">
+                  <svg class="reserve-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 18H5V8h14v12zm0-14v2H5V6h14z"/>
+                  </svg>
+                  <input type="text" class="reserve-input" placeholder="Fecha" />
+                </div>
+              </div>
+              
+              <div class="reserve-input-group">
+                <label>Hora</label>
+                <div class="reserve-input-wrapper">
+                  <svg class="reserve-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 8v5h5v-2h-3V8z"/>
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                  </svg>
+                  <select class="reserve-input reserve-select">
+                    <option value="">Tiempo</option>
+                    <option value="08:00">08:00</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            
+            <button class="reserve-btn">Siguiente</button>
+          </div>
+        </div>
+
+        <!-- Sección de ventajas -->
+        <div class="reserve-advantages">
+          <h3>Ventajas</h3>
+          
+          <div class="advantage-item">
+            <div class="advantage-icon">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm12 18H5V8h14v12zm0-14v2H5V6h14z"/>
+              </svg>
+            </div>
+            <p class="advantage-text">
+              Elige la hora exacta del viaje con hasta 90 días de anticipación.
+            </p>
+          </div>
+
+          <div class="advantage-item">
+            <div class="advantage-icon">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 8v5h5v-2h-3V8z"/>
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+              </svg>
+            </div>
+            <p class="advantage-text">
+              Tiempo de espera adicional incluido para cumplir con tu viaje.
+            </p>
+          </div>
+
+          <div class="advantage-item">
+            <div class="advantage-icon">
+              <svg fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+              </svg>
+            </div>
+            <p class="advantage-text">
+              Cancela sin cargo con hasta 60 minutos de anticipación.
+            </p>
+          </div>
+
+          <div class="reserve-terms">
+            <button>Consulta los términos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nueva sección de conductor -->
+  <section class="driver-section">
+    <a id="conduces" style="position: absolute; top: -100px;"></a>
+    <div class="driver-container">
+      <div class="driver-image">
+        <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_576,w_576/v1684855112/assets/96/4dd3d1-94e7-481e-b28c-08d59353b9e0/original/earner-illustra.png" alt="Conductor Uber" />
+      </div>
+      <div class="driver-content">
+        <h2>Conduce cuando quieras y genera las ganancias que necesitas</h2>
+        <p>Genera ganancias en tu propio tiempo con entregas, viajes o ambos. Puedes usar tu propio auto u optar por un vehículo a través de la app de Uber.</p>
+        <div class="driver-buttons">
+          <a href="#" class="btn-primary">Comenzar</a>
+          <a href="#" class="btn-link">¿Ya tienes una cuenta? Iniciar sesión</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nueva sección de empresas -->
+  <section class="business-section">
+    <a id="empresas" style="position: absolute; top: -100px;"></a>
+    <div class="business-container">
+      <div class="business-content">
+        <h2>La misma plataforma de Uber, reinventada para los negocios</h2>
+        <p>Uber para Empresas es una plataforma con la que las empresas de todos los tamaños pueden gestionar viajes, comidas y entregas de manera global para todos como entregas locales.</p>
+        <div class="business-buttons">
+          <a href="#" class="btn-primary">Comenzar</a>
+          <a href="#" class="btn-link">Conoce nuestras soluciones</a>
+        </div>
+      </div>
+      <div class="business-image">
+        <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_576,w_576/v1684887108/assets/76/baf1ea-385a-408c-846b-59211086196c/original/u4b-square.png" alt="Uber para empresas" />
+      </div>
+    </div>
+  </section>
+
+  <section class="apps-section">
+    <a id="apps" style="position: absolute; top: -100px;"></a>
+    <div class="apps-container">
+      <h2 class="apps-title">Es más fácil con las apps</h2>
+      
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="qr-code">
+            <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_1152,w_1152/v1690807720/assets/a5/9986ad-0d9f-4396-8539-389bce97f579/original/Final-Download-Uber-App.png" alt="QR Code" />
+          </div>
+          <div class="app-content">
+            <h3>Descarga la app de Uber</h3>
+            <p>Escanea para descargar</p>
+          </div>
+        </div>
+        
+        <div class="app-item">
+          <div class="qr-code">
+            <img src="https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,h_1152,w_1152/v1690813624/assets/50/e85531-2f7e-4ee7-92d4-e39a6801ee2b/original/QR_https___t.uber.com_download-driver-app.png" alt="QR Code" />
+          </div>
+          <div class="app-content">
+            <h3>Descarga la app para socios</h3>
+            <p>Escanea para descargar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-logo">Uber</div>
+      
+      <div class="footer-support">
+        <a href="#">Visita el Centro de ayuda</a>
+      </div>
+      
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Compañía</h4>
+          <ul>
+            <li><a href="#">Quiénes somos</a></li>
+            <li><a href="#">Lo que ofrecemos</a></li>
+            <li><a href="#">Sala de prensa</a></li>
+            <li><a href="#">Inversionistas</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Oportunidades laborales</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Productos</h4>
+          <ul>
+            <li><a href="#viaje">Viaje</a></li>
+            <li><a href="#conduces">Conduces</a></li>
+            <li><a href="#productos">Hacer entregas</a></li>
+            <li><a href="#productos">Cómelas</a></li>
+            <li><a href="#empresas">Uber para Empresas</a></li>
+            <li><a href="#empresas">Uber Freight</a></li>
+            <li><a href="#productos">Tarjetas de regalo</a></li>
+            <li><a href="#productos">Uber Health</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Ciudadanía global</h4>
+          <ul>
+            <li><a href="#">Seguridad</a></li>
+            <li><a href="#">Sostenibilidad</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Viajes</h4>
+          <ul>
+            <li><a href="#reserva">Reserva</a></li>
+            <li><a href="#viaje">Aeropuertos</a></li>
+            <li><a href="#viaje">Ciudades</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Twitter">𝕏</a>
+        <a href="#" aria-label="YouTube">▶</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Instagram">⬛</a>
+      </div>
+      
+      <div class="footer-bottom">
+        <div class="footer-location">
+          <span>🌐 Español (internacional)</span>
+          <span>📍 San Salvador</span>
+        </div>
+        
+        <div class="footer-links">
+          <a href="#">Privacidad</a>
+          <a href="#">Accesibilidad</a>
+          <a href="#">Términos</a>
+        </div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>© 2025 Uber Technologies Inc.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.onload = function() {
+      const today = new Date().toISOString().split('T')[0];
+      document.querySelector('input[type="date"]').value = today;
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      document.querySelector('input[type="time"]').value = `${hours}:${minutes}`;
+    };
+  </script>
+</body>
+</html>
